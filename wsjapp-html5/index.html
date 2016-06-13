@@ -1,0 +1,386 @@
+<html>
+    <head>
+    <title>Particle Test</title>
+        <style>
+            html { height: 100%; }
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #ffffff;
+                height: 100%;
+            }
+            .container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: 0;
+                margin-top: -300px;
+                margin-left: -150px;
+                padding: 0;
+                width: 300px;
+                height: 600px;
+                overflow: hidden;
+            }
+            .particles {
+                position: inherit;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                width: 300px;
+                height: 600px;
+                overflow: hidden;
+                /*z-index: 500;*/
+                z-index: 250;
+            }
+            .particles canvas {
+                margin-top: -20px;
+                opacity: 0;
+                animation: pIn .25s ease-in .1s 1 normal forwards;
+            }
+            img.shader {
+                position: inherit;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                width: 300px;
+                height: 600px;
+                z-index: 200;
+            }
+            .bg {
+                position: inherit;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                background-color: #9aabb5;/*#3EB7F3;*/
+                width: 300px;
+                height: 600px;
+                overflow: hidden;
+                z-index: 100;
+            }
+            .product {
+                position: inherit;
+                bottom: 15px;
+                right: 15px;
+                margin: 0;
+                padding: 0;
+                width: 115px;
+                height: 230px;
+                z-index: 400;
+                overflow: hidden;
+            }
+
+            .product-pixels {
+                position: inherit;
+                bottom: 0;
+                right: 15px;
+                margin: 0;
+                padding: 0;
+                width: 115px;
+                height: 350px;
+                overflow: hidden;
+                z-index: 300;
+                opacity: 0;
+                animation: pixelIn .25s linear 3s 1 normal forwards, pixelMove 7s ease-in-out 3s 1 normal forwards;
+            }
+            .particlesTop {
+                position: inherit;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                width: 300px;
+                height: 600px;
+                overflow: hidden;
+                z-index: 500;
+            }
+            .particlesTop canvas {
+                margin-top: -20px;
+                opacity: 0;
+                animation: pTopIn .25s ease-in .1s 1 normal forwards;
+            }
+
+            .logo {
+                position: inherit;
+                bottom: 18px;
+                left: 15px;
+                margin: 0;
+                padding: 0;
+                width: 137px;
+                height: 29px;
+                overflow: hidden;
+                z-index: 1000;
+                opacity: 0;
+                animation: logoIn 1s ease-out .1s 1 normal forwards;
+            }
+            .headline1 {
+                position: inherit;
+                top: 358px;
+                left: 16px;
+                margin: 0;
+                padding: 0;
+                width: 84px;
+                height: 26px;
+                overflow: hidden;
+                z-index: 600;
+                opacity: 0;
+                transform: translate3d(0px, 20px, 0px);
+                animation: headlineOneIn 1s ease-in-out 6s 1 normal forwards;
+            }
+            .headline2 {
+                position: inherit;
+                top: 392px;
+                left: 16px;
+                margin: 0;
+                padding: 0;
+                width: 136px;
+                height: 26px;
+                overflow: hidden;
+                z-index: 650;
+                opacity: 0;
+                transform: translate3d(0px, 20px, 0px);
+                animation: headlineTwoIn 1s ease-in-out 6.2s 1 normal forwards;
+            }
+            .subhead {
+                position: inherit;
+                top: 430px;
+                left: 16px;
+                margin: 0;
+                padding: 0;
+                width: 115px;
+                height: 39px;
+                overflow: hidden;
+                z-index: 700;
+                opacity: 0;
+                animation: subheadIn 1s ease-out 7.25s 1 normal forwards;
+            }
+            .cta-icon1 {
+                position: inherit;
+                top: 485px;
+                left: 16px;
+                margin: 0;
+                padding: 0;
+                width: 24px;
+                height: 32px;
+                overflow: hidden;
+                z-index: 750;
+                opacity: 0;
+                transform: translate3d(20px, 0px, 0px);
+                animation: ctaIconOneIn .5s ease-in-out 8.5s 1 normal forwards;
+            }
+            .cta-icon2 {
+                position: inherit;
+                top: 488px;
+                left: 42px;
+                margin: 0;
+                padding: 0;
+                width: 14px;
+                height: 26px;
+                overflow: hidden;
+                z-index: 770;
+                opacity: 0;
+                transform: translate3d(20px, 0px, 0px);
+                animation: ctaIconTwoIn .5s ease-in-out 8.75s 1 normal forwards;
+            }
+            .cta-icon3 {
+                position: inherit;
+                top: 491px;
+                left: 57px;
+                margin: 0;
+                padding: 0;
+                width: 13px;
+                height: 20px;
+                overflow: hidden;
+                z-index: 790;
+                opacity: 0;
+                transform: translate3d(20px, 0px, 0px);
+                animation: ctaIconThreeIn .5s ease-in-out 9s 1 normal forwards;
+            }
+            .cta {
+                position: inherit;
+                top: 487px;
+                left: 75px;
+                margin: 0;
+                padding: 0;
+                width: 90px;
+                height: 28px;
+                overflow: hidden;
+                z-index: 800;
+                opacity: 0;
+                transform: scale(1.2);
+                animation: ctaIn .5s ease-in-out 9.5s 1 normal forwards;
+            }
+
+            @keyframes logoIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            @keyframes headlineOneIn {
+                0% {
+                    opacity: 0;
+                    transform: translate3d(0px, 20px, 0px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate3d(0px, 0px, 0px);
+                }
+            }
+            @keyframes headlineTwoIn {
+                0% {
+                    opacity: 0;
+                    transform: translate3d(0px, 20px, 0px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate3d(0px, 0px, 0px);
+                }
+            }
+            @keyframes subheadIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes ctaIconOneIn {
+                0% {
+                    opacity: 0;
+                    transform: translate3d(20px, 0px, 0px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate3d(0px, 0px, 0px);
+                }
+            }
+            @keyframes ctaIconTwoIn {
+                0% {
+                    opacity: 0;
+                    transform: translate3d(20px, 0px, 0px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate3d(0px, 0px, 0px);
+                }
+            }
+            @keyframes ctaIconThreeIn {
+                0% {
+                    opacity: 0;
+                    transform: translate3d(20px, 0px, 0px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate3d(0px, 0px, 0px);
+                }
+            }
+            @keyframes ctaIn {
+                0% {
+                    opacity: 0;
+                    transform: scale(1.2);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes pIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            @keyframes pTopIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes productReveal {
+                0% {
+                    height: 0;
+                }
+                100% {
+                    height: 230px;
+                }
+            }
+
+            @keyframes pixelIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes pixelMove {
+                0% {
+                    bottom: 0;
+                }
+                100% {
+                    bottom: 280px;
+                    /*bottom: 230px;*/
+                }
+            }
+        </style>
+        <script src="particles.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="bg">
+                <canvas></canvas>
+            </div>
+            <div class="particles">
+                <canvas></canvas>
+            </div>
+            <img class="shader" src="shader.png" />
+            <div class="product">
+                <!-- <img src="iphone.png" /> -->
+                <canvas></canvas>
+            </div>
+            <div class="product-pixels">
+                <canvas></canvas>
+            </div>
+            <div class="particlesTop">
+                <canvas></canvas>
+            </div>
+            <div class="headline1">
+                <img src="headline1.png" />
+            </div>
+            <div class="headline2">
+                <img src="headline2.png" />
+            </div>
+            <div class="subhead">
+                <img src="subhead.png" />
+            </div>
+            <div class="cta-icon1">
+                <img src="cta-icon1.png" />
+            </div>
+            <div class="cta-icon2">
+                <img src="cta-icon2.png" />
+            </div>
+            <div class="cta-icon3">
+                <img src="cta-icon3.png" />
+            </div>
+            <div class="cta">
+                <img src="cta-badge.png" />
+            </div>
+            <div class="logo">
+                <img src="wsj-logo.png" />
+            </div>
+        </div>
+    </body>
+</html>
